@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dona das Químicas | Salão de Beleza e Especialista em Química Capilar</title>
+<meta name="description" content="Conheça a Dona das Químicas, confira nossos serviços de beleza e tratamentos capilares e agende seu horário pelo WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://donadasquimicas.com.br/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dona das Químicas">
+<meta property="og:title" content="Dona das Químicas | Salão de Beleza e Especialista em Química Capilar">
+<meta property="og:description" content="Transformando cabelos com técnica, cuidado e resultados que valorizam a sua beleza. Agende pelo WhatsApp.">
+<meta property="og:image" content="assets/thalia-fallback.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Favicon: monogram "D" gold on black, inline so no extra request -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0a09'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23c9a15b' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     DESIGN TOKENS
+  ========================================================= */
+  :root{
+    --black:#0c0a09;
+    --charcoal:#161310;
+    --panel:#1d1812;
+    --gold:#c9a15b;
+    --gold-light:#ecd39a;
+    --gold-deep:#8f6f3a;
+    --ivory:#f8f3ea;
+    --ivory-soft:#efe5d2;
+    --taupe:#a99872;
+    --line: rgba(201,161,91,.32);
+    --line-soft: rgba(201,161,91,.16);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+  }
+  body.locked{overflow:hidden; height:100vh; height:100svh;}
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; color:var(--charcoal); letter-spacing:-.01em;}
+  .skip-link{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--black); padding:.8em 1.2em; z-index:999;}
+  .skip-link:focus{left:1em; top:1em;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(1.25rem,4vw,2.5rem);}
+  .eyebrow{font-size:.78rem; letter-spacing:.14em; color:var(--gold-deep); font-weight:500;}
+  .section-head{max-width:640px; margin-bottom:3rem;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.7rem); margin-top:.5rem;}
+  .section-head p{color:#5b5347; margin-top:.9rem; max-width:52ch;}
+  section{padding:clamp(4rem,9vw,7rem) 0;}
+  .rule{height:1px; background:var(--line); width:100%; border:0;}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.6em;
+    padding:.95em 1.9em; font-size:.95rem; font-weight:500; text-align:center;
+    border-radius:2px; transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+    max-width:100%;
+  }
+  .btn-gold{background:var(--gold); color:var(--black);}
+  .btn-gold:hover{background:var(--gold-light); transform:translateY(-2px);}
+  .btn-line{border:1px solid var(--line); color:var(--ivory);}
+  .btn-line:hover{border-color:var(--gold); color:var(--gold-light); transform:translateY(-2px);}
+  .btn-line.dark{border-color:rgba(20,17,14,.28); color:var(--charcoal);}
+  .btn-line.dark:hover{border-color:var(--gold-deep); color:var(--gold-deep);}
+
+  /* =========================================================
+     INTRO ANIMATION
+  ========================================================= */
+  #intro{
+    position:fixed; inset:0; z-index:1000; background:var(--black);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  #introCanvas{position:absolute; inset:0; width:100%; height:100%;}
+  .intro-stage{position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center;}
+  .intro-photo{
+    position:absolute; height:82%; max-height:640px; top:50%; left:50%;
+    transform:translate(-50%,-46%) scale(1.12); opacity:0;
+    filter:brightness(.72) saturate(.9);
+    transition:opacity 1.8s var(--ease), transform 2.4s var(--ease), filter 1.8s var(--ease);
+    border-radius:2px;
+    box-shadow:0 40px 100px rgba(0,0,0,.6);
+  }
+  .intro-photo.show{opacity:1; transform:translate(-50%,-50%) scale(1); filter:brightness(.92) saturate(1);}
+  .intro-vignette{position:absolute; inset:0; background:radial-gradient(ellipse at center, transparent 35%, rgba(12,10,9,.85) 100%);}
+  .intro-wordmark{
+    position:relative; z-index:3; text-align:center; opacity:0; transform:translateY(14px);
+    transition:opacity 1.1s var(--ease), transform 1.1s var(--ease);
+  }
+  .intro-wordmark.show{opacity:1; transform:translateY(0);}
+  .intro-wordmark .line{width:1px; height:26px; background:var(--gold); margin:0 auto .9rem; opacity:.8;}
+  .intro-wordmark h1{
+    color:var(--ivory); font-size:clamp(1.5rem,4.4vw,2.6rem);
+    letter-spacing:.06em; font-weight:500;
+  }
+  .intro-wordmark span{color:var(--gold-light);}
+  .intro-wordmark p{color:var(--taupe); font-size:.72rem; letter-spacing:.24em; margin-top:.7rem;}
+
+  .intro-character{
+    position:absolute; left:50%; top:8%; transform:translateX(-50%);
+    width:min(62vw,300px); z-index:-1; pointer-events:none;
+  }
+  .intro-character svg{width:100%; height:auto; display:block;}
+  .hair-strand{transform-box:view-box; transform-origin:175px 46px;}
+  @keyframes hairSwing{
+    0%{transform:rotate(0deg);}
+    30%{transform:rotate(-15deg);}
+    60%{transform:rotate(9deg);}
+    82%{transform:rotate(-3deg);}
+    100%{transform:rotate(0deg);}
+  }
+  .intro-wordmark.show .hair-strand{animation:hairSwing 1.7s var(--ease) both;}
+  .intro-wordmark.show .hair-strand:nth-child(2){animation-delay:.05s;}
+  .intro-wordmark.show .hair-strand:nth-child(3){animation-delay:.1s;}
+  .intro-wordmark.show .hair-strand:nth-child(4){animation-delay:.15s;}
+  .intro-wordmark.show .hair-strand:nth-child(5){animation-delay:.2s;}
+  @media (max-width:640px){ .intro-character{width:52vw; top:5%;} }
+  #intro.fade-out{opacity:0; transition:opacity 1.1s var(--ease); pointer-events:none;}
+  .intro-skip{
+    position:absolute; bottom:calc(2rem + env(safe-area-inset-bottom)); right:calc(2rem + env(safe-area-inset-right)); z-index:5;
+    color:var(--taupe); font-size:.82rem; letter-spacing:.04em;
+    border-bottom:1px solid transparent; transition:color .3s, border-color .3s;
+  }
+  .intro-skip:hover{color:var(--gold-light); border-color:var(--gold-light);}
+  @media (max-width:640px){
+    .intro-photo{height:64%;}
+    .intro-skip{bottom:calc(1.25rem + env(safe-area-inset-bottom)); right:calc(1.25rem + env(safe-area-inset-right));}
+  }
+  @media (orientation:landscape) and (max-height:500px){
+    .intro-photo{height:88%; max-height:380px;}
+    .intro-character{top:2%; width:min(30vw,190px);}
+    .intro-wordmark h1{font-size:clamp(1.2rem,3.6vw,2rem);}
+    .intro-wordmark p{margin-top:.4rem;}
+  }
+
+  /* =========================================================
+     HEADER
+  ========================================================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:200;
+    padding:calc(1.15rem + env(safe-area-inset-top)) 0 1.15rem; transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{background:rgba(12,10,9,.92); backdrop-filter:blur(10px); padding:calc(.85rem + env(safe-area-inset-top)) 0 .85rem; border-color:var(--line-soft);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-family:var(--serif); font-size:1.15rem; letter-spacing:.03em; color:var(--ivory);}
+  .logo span{color:var(--gold);}
+  nav.primary-nav{display:flex; gap:2.1rem; align-items:center;}
+  nav.primary-nav a{
+    color:var(--ivory-soft); font-size:.88rem; letter-spacing:.02em;
+    padding-bottom:4px; border-bottom:1px solid transparent; transition:color .3s, border-color .3s;
+  }
+  nav.primary-nav a:hover{color:var(--gold-light); border-color:var(--gold);}
+  .header-actions{display:flex; align-items:center; gap:1.4rem;}
+  .header-cta{
+    background:var(--gold); color:var(--black); padding:.68em 1.35em; font-size:.82rem; font-weight:600;
+    letter-spacing:.02em; border-radius:2px; transition:background .3s, transform .3s;
+  }
+  .header-cta:hover{background:var(--gold-light); transform:translateY(-1px);}
+  .burger{display:none; width:34px; height:34px; position:relative; z-index:210;}
+  .burger span{position:absolute; left:6px; right:6px; height:1px; background:var(--ivory); transition:transform .35s var(--ease), opacity .35s;}
+  .burger span:nth-child(1){top:12px;}
+  .burger span:nth-child(2){top:17px;}
+  .burger span:nth-child(3){top:22px;}
+  .burger.open span:nth-child(1){transform:translateY(5px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+
+  .mobile-nav{
+    position:fixed; inset:0; background:var(--black); z-index:190;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.9rem;
+    transform:translateY(-100%); transition:transform .5s var(--ease);
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{color:var(--ivory); font-family:var(--serif); font-size:1.5rem;}
+  .mobile-nav .header-cta{margin-top:1rem;}
+
+  @media (max-width:880px){
+    nav.primary-nav{display:none;}
+    .burger{display:block;}
+  }
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+  .hero{
+    position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:flex-end;
+    background:var(--black); overflow:hidden;
+  }
+  .hero-bg{position:absolute; inset:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:78% 20%; opacity:.9;}
+  .hero-bg::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(100deg, rgba(12,10,9,.97) 20%, rgba(12,10,9,.55) 52%, rgba(12,10,9,.15) 78%);
+  }
+  .hero-inner{position:relative; z-index:2; padding-bottom:clamp(3.5rem,8vw,6rem); padding-top:9rem; width:100%;}
+  .hero .eyebrow{color:var(--gold-light);}
+  .hero h1{
+    color:var(--ivory); font-size:clamp(2.5rem,6vw,4.4rem); max-width:14ch; line-height:1.06;
+    margin-top:1rem;
+  }
+  .hero p.lead{color:var(--taupe); max-width:44ch; font-size:1.05rem; margin-top:1.4rem;}
+  .hero-actions{display:flex; gap:1rem; flex-wrap:wrap; margin-top:2.2rem;}
+
+  @media (orientation:landscape) and (max-height:500px){
+    .hero{min-height:auto;}
+    .hero-inner{padding-top:5.5rem; padding-bottom:2rem;}
+    .hero p.lead{margin-top:.8rem;}
+    .hero-actions{margin-top:1.3rem;}
+  }
+
+  /* =========================================================
+     ABOUT
+  ========================================================= */
+  .about .wrap{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(2rem,6vw,5rem); align-items:center;}
+  .about-photo{position:relative;}
+  .about-photo .frame-line{position:absolute; top:-18px; left:-18px; right:18px; bottom:18px; border:1px solid var(--gold); z-index:0;}
+  @media (max-width:380px){
+    .about-photo .frame-line{top:-10px; left:-10px; right:10px; bottom:10px;}
+  }
+  .about-photo img{position:relative; z-index:1; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top center;}
+  .about-photo-caption{
+    margin-top:1rem; font-family:var(--serif); font-size:1.05rem; color:var(--charcoal);
+  }
+  .about-photo-caption span{font-family:var(--sans); font-size:.82rem; color:var(--gold-deep); font-weight:500;}
+  .about-copy h2{margin-top:.5rem;}
+  .about-copy p.lead-text{margin-top:1.3rem; font-size:1.06rem; color:#4a4338; max-width:56ch;}
+  .about-facts{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.8rem;}
+  .about-facts span{
+    font-size:.82rem; padding:.5em 1em; border:1px solid rgba(20,17,14,.18); color:#4a4338;
+  }
+  @media (max-width:860px){
+    .about .wrap{grid-template-columns:1fr; text-align:left;}
+    .about-photo{max-width:340px;}
+  }
+
+  /* =========================================================
+     HIGHLIGHTS
+  ========================================================= */
+  .highlights{background:var(--black); color:var(--ivory);}
+  .highlights .section-head h2{color:var(--ivory);}
+  .highlights .section-head p{color:var(--taupe);}
+  .highlight-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:0;}
+  .highlight-item{
+    padding:2.1rem 1.6rem 2.1rem 0; border-top:1px solid var(--line-soft);
+  }
+  .highlight-item .ico{font-size:1.4rem;}
+  .highlight-item h3{color:var(--ivory); font-size:1.08rem; margin-top:.9rem; font-weight:500;}
+  .highlight-item p{color:var(--taupe); font-size:.92rem; margin-top:.5rem;}
+  @media (min-width:900px){ .highlight-grid{grid-template-columns:repeat(auto-fit, minmax(260px,1fr));} }
+
+  /* =========================================================
+     SERVICES
+  ========================================================= */
+  .filter-row{display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:2.4rem;}
+  .filter-btn{
+    padding:.55em 1.2em; font-size:.82rem; border:1px solid rgba(20,17,14,.2); color:#5b5347;
+    transition:all .3s;
+  }
+  .filter-btn.active, .filter-btn:hover{background:var(--charcoal); color:var(--gold-light); border-color:var(--charcoal);}
+  .service-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.1rem;}
+  @media (min-width:900px){ .service-grid{grid-template-columns:repeat(auto-fit, minmax(280px,1fr));} }
+  .service-card{
+    container-type:inline-size;
+    border:1px solid rgba(20,17,14,.14); padding:1.7rem; display:flex; flex-direction:column; gap:.7rem;
+    min-width:0; transition:border-color .3s, transform .3s;
+  }
+  .service-card:hover{border-color:var(--gold); transform:translateY(-3px);}
+  .service-card h3{font-size:1.1rem; font-weight:500; overflow-wrap:break-word;}
+  .service-card .desc{font-size:.88rem; color:#655c4d; flex:1;}
+  .service-card .meta{font-size:.76rem; color:var(--gold-deep); letter-spacing:.02em;}
+  .service-card .price-row{display:flex; align-items:center; justify-content:space-between; gap:.8rem; margin-top:.4rem; padding-top:.9rem; border-top:1px solid rgba(20,17,14,.1);}
+  .service-card .price{font-family:var(--serif); font-size:1.15rem; color:var(--gold-deep); white-space:nowrap;}
+  .service-card .book-btn{font-size:.8rem; font-weight:600; color:var(--charcoal); border-bottom:1px solid var(--gold);}
+  .service-card .book-btn:hover{color:var(--gold-deep);}
+  @container (max-width:230px){
+    .service-card .price-row{flex-direction:column; align-items:flex-start; gap:.5rem;}
+  }
+
+  /* =========================================================
+     GALLERY
+  ========================================================= */
+  .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:.7rem;}
+  @media (min-width:600px){ .gallery-grid{grid-template-columns:repeat(auto-fit, minmax(180px,1fr));} }
+  @media (min-width:1000px){ .gallery-grid{grid-template-columns:repeat(auto-fit, minmax(240px,1fr));} }
+  .gallery-tile{
+    position:relative; aspect-ratio:3/4; overflow:hidden; cursor:pointer;
+    border:1px dashed rgba(201,161,91,.5); background:linear-gradient(160deg,#efe6d4,#e6d9bd);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem;
+    transition:transform .4s var(--ease);
+  }
+  .gallery-tile:hover{transform:scale(1.02);}
+  .gallery-tile img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease);}
+  .gallery-tile:hover img{transform:scale(1.06);}
+  .gallery-tile .placeholder-ico{font-size:1.5rem; color:var(--gold-deep); opacity:.7;}
+  .gallery-tile .placeholder-label{font-size:.72rem; color:#7a6d54; text-align:center; padding:0 .6rem;}
+  .gallery-tile .tag{position:absolute; top:.6rem; left:.6rem; background:rgba(12,10,9,.75); color:var(--gold-light); font-size:.65rem; letter-spacing:.06em; padding:.3em .6em;}
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(10,8,7,.94); z-index:500; display:none;
+    align-items:center; justify-content:center; padding:2rem;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:640px; width:100%; text-align:center;}
+  .lightbox-inner .box{background:var(--charcoal); border:1px solid var(--line); padding:3rem 1.5rem; color:var(--taupe);}
+  .lightbox-close{position:absolute; top:1.5rem; right:1.8rem; color:var(--ivory); font-size:1.6rem;}
+
+  /* =========================================================
+     BEFORE / AFTER
+  ========================================================= */
+  .ba-wrap{max-width:640px; margin:0 auto;}
+  .ba-slider{
+    position:relative; aspect-ratio:4/5; overflow:hidden; user-select:none; touch-action:pan-y;
+    border:1px solid var(--line);
+  }
+  .ba-after, .ba-before{position:absolute; inset:0; display:flex; flex-direction:column; gap:.6rem;}
+  .ba-before{align-items:flex-start; justify-content:flex-end; padding:0 0 1.5rem 1.1rem;}
+  .ba-after{align-items:flex-end; justify-content:flex-start; padding:1.2rem 1.1rem 0 0;}
+  .ba-after{background:linear-gradient(160deg,#241d14,#0c0a09);}
+  .ba-before{background:linear-gradient(160deg,#4a4136,#1c1712); clip-path:inset(0 50% 0 0);}
+  .ba-label{color:var(--gold-light); font-size:.78rem; letter-spacing:.18em; z-index:2;}
+  .ba-handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--gold);
+    transform:translateX(-50%); cursor:ew-resize;
+  }
+  .ba-handle::after{
+    content:'⇔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:42px; height:42px; border-radius:50%; background:var(--gold); color:var(--black);
+    display:flex; align-items:center; justify-content:center; font-size:1rem;
+  }
+  .ba-before img, .ba-after img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .ba-add{
+    position:relative; z-index:4; background:rgba(12,10,9,.6); color:var(--gold-light);
+    border:1px solid var(--gold); padding:.65em 1.2em; font-size:.82rem; transition:background .3s, color .3s;
+  }
+  .ba-add:hover{background:var(--gold); color:var(--black);}
+  .ba-actions{position:relative; z-index:4; display:flex; flex-direction:column; gap:.4rem;}
+  .ba-remove{
+    background:rgba(12,10,9,.6); color:var(--ivory-soft); border:1px solid rgba(248,243,234,.4);
+    padding:.65em 1.1em; font-size:.8rem; transition:background .3s, border-color .3s, color .3s;
+  }
+  .ba-remove:hover{border-color:#e0857a; color:#e0857a;}
+  .ba-before .ba-label, .ba-after .ba-label{text-shadow:0 1px 8px rgba(0,0,0,.7);}
+
+  .gallery-tile.filled{border-style:solid; border-color:var(--line);}
+  .gallery-tile video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .gallery-tile .media-remove{
+    position:absolute; top:.5rem; right:.5rem; z-index:3; width:26px; height:26px; border-radius:50%;
+    background:rgba(12,10,9,.75); color:var(--ivory); font-size:.85rem; display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .25s;
+  }
+  .gallery-tile:hover .media-remove, .gallery-tile:focus-within .media-remove{opacity:1;}
+  .gallery-tile .play-badge{
+    position:absolute; z-index:2; bottom:.6rem; left:.6rem; background:rgba(12,10,9,.7); color:var(--gold-light);
+    font-size:.68rem; letter-spacing:.05em; padding:.25em .55em;
+  }
+  .gallery-note{font-size:.78rem; color:#8a7d64; margin-top:.9rem;}
+
+  /* =========================================================
+     TESTIMONIALS
+  ========================================================= */
+  .testi-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.1rem;}
+  .testi-card{border:1px solid rgba(20,17,14,.14); padding:1.8rem; position:relative; min-width:0;}
+  .testi-card .stars{color:var(--gold); font-size:.9rem; letter-spacing:.15em;}
+  .testi-card p.quote{margin-top:.9rem; font-size:.95rem; color:#4a4338; overflow-wrap:break-word;}
+  .testi-card .who{margin-top:1.2rem; font-size:.85rem; font-weight:600;}
+  .testi-card .badge{position:absolute; top:1rem; right:1rem; font-size:.62rem; letter-spacing:.05em; color:var(--gold-deep); border:1px solid var(--line); padding:.2em .5em;}
+  @media (min-width:900px){ .testi-grid{grid-template-columns:repeat(auto-fit, minmax(280px,1fr));} }
+
+  /* =========================================================
+     FAQ
+  ========================================================= */
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid rgba(20,17,14,.14);}
+  .faq-q{
+    width:100%; display:flex; justify-content:space-between; align-items:center; gap:1rem;
+    padding:1.3rem 0; text-align:left; font-size:1rem; font-weight:500;
+  }
+  .faq-q .plus{font-size:1.2rem; color:var(--gold-deep); transition:transform .35s var(--ease);}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s var(--ease);}
+  .faq-a p{padding-bottom:1.3rem; color:#5b5347; font-size:.92rem; max-width:64ch;}
+
+  /* =========================================================
+     CONTACT
+  ========================================================= */
+  .contact{background:var(--charcoal); color:var(--ivory);}
+  .contact .section-head h2{color:var(--ivory);}
+  .contact .section-head p{color:var(--taupe);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+  .contact-grid > div{min-width:0;}
+  .contact-info dl{display:grid; grid-template-columns:auto minmax(0,1fr); gap:.7rem 1.2rem; font-size:.92rem; min-width:0;}
+  .contact-info dd{overflow-wrap:anywhere;}
+  .contact-info dt{color:var(--gold-light); letter-spacing:.03em;}
+  .contact-info dd{color:var(--taupe);}
+  .contact-panel{border:1px solid var(--line); padding:2.4rem;}
+  .contact-panel h3{color:var(--ivory); font-size:1.2rem;}
+  .contact-panel p{color:var(--taupe); margin-top:.7rem; font-size:.92rem;}
+  .contact-panel .btn{margin-top:1.5rem;}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr;} }
+
+  /* =========================================================
+     FINAL CTA
+  ========================================================= */
+  .final-cta{
+    background:var(--black); color:var(--ivory); text-align:center; position:relative; overflow:hidden;
+  }
+  .final-cta::before{
+    content:''; position:absolute; top:-40%; left:50%; width:600px; height:600px; transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(201,161,91,.14), transparent 70%);
+  }
+  .final-cta .inner{position:relative; z-index:1; max-width:640px; margin:0 auto;}
+  .final-cta h2{color:var(--ivory); font-size:clamp(1.9rem,5vw,2.8rem);}
+  .final-cta p{color:var(--taupe); margin-top:1.1rem;}
+  .final-cta .btn{margin-top:2rem;}
+
+  /* =========================================================
+     FOOTER
+  ========================================================= */
+  footer{background:var(--black); color:var(--taupe); padding:3.5rem 0 2rem;}
+  .footer-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; padding-bottom:2.4rem; border-bottom:1px solid var(--line-soft);}
+  .footer-brand h3{color:var(--ivory); font-size:1.2rem;}
+  .footer-brand p{margin-top:.6rem; font-size:.85rem; max-width:32ch;}
+  .footer-links{display:flex; gap:3rem; flex-wrap:wrap;}
+  .footer-links h4{color:var(--ivory); font-size:.8rem; letter-spacing:.06em; margin-bottom:.9rem; font-weight:500;}
+  .footer-links a{display:block; font-size:.86rem; margin-bottom:.55rem; color:var(--taupe); transition:color .3s;}
+  .footer-links a:hover{color:var(--gold-light);}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:1.6rem; font-size:.78rem;}
+
+  /* =========================================================
+     FLOATING WHATSAPP
+  ========================================================= */
+  .float-whatsapp{
+    position:fixed; bottom:calc(1.4rem + env(safe-area-inset-bottom)); right:calc(1.4rem + env(safe-area-inset-right)); z-index:150;
+    width:58px; height:58px; border-radius:50%; background:var(--gold);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,.35);
+    transition:transform .3s var(--ease);
+  }
+  .float-whatsapp:hover{transform:scale(1.07);}
+  .float-whatsapp svg{width:26px; height:26px;}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body class="locked">
+
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<!-- =========================================================
+     INTRO ANIMATION
+========================================================= -->
+<div id="intro" role="presentation" aria-hidden="true">
+  <canvas id="introCanvas"></canvas>
+  <div class="intro-stage">
+    <picture>
+      <source srcset="assets/thalia-intro.webp" type="image/webp">
+      <img id="introPhoto" class="intro-photo" src="assets/thalia-intro.jpg" alt="">
+    </picture>
+    <div class="intro-vignette"></div>
+    <div class="intro-wordmark" id="introWordmark">
+      <div class="intro-character" aria-hidden="true">
+        <svg viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ecd39a"/>
+              <stop offset="100%" stop-color="#8f6f3a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="hair-strand" d="M160,48 C108,92 96,152 66,214" fill="none" stroke="url(#hairGrad)" stroke-width="7" stroke-linecap="round"/>
+          <path class="hair-strand" d="M168,45 C128,102 116,172 90,244" fill="none" stroke="url(#hairGrad)" stroke-width="6" stroke-linecap="round"/>
+          <path class="hair-strand" d="M178,44 C160,112 166,192 150,262" fill="none" stroke="url(#hairGrad)" stroke-width="5" stroke-linecap="round"/>
+          <path class="hair-strand" d="M188,46 C202,112 216,182 206,252" fill="none" stroke="url(#hairGrad)" stroke-width="6" stroke-linecap="round"/>
+          <path class="hair-strand" d="M196,50 C230,98 246,160 230,222" fill="none" stroke="url(#hairGrad)" stroke-width="7" stroke-linecap="round"/>
+          <path d="M148,100 C150,120 148,132 140,145 C120,160 92,176 82,200 L268,200 C258,176 230,160 210,145 C202,132 200,120 202,100 C190,108 160,108 148,100 Z" fill="rgba(236,211,154,.10)" stroke="var(--gold)" stroke-width="1.2"/>
+          <ellipse cx="175" cy="72" rx="30" ry="34" fill="rgba(236,211,154,.14)" stroke="var(--gold)" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="line"></div>
+      <h1>DONA DAS <span>QUÍMICAS</span></h1>
+      <p>SALÃO ESPECIALIZADO EM QUÍMICA CAPILAR</p>
+    </div>
+  </div>
+  <button class="intro-skip" id="introSkip" type="button">Pular apresentação</button>
+</div>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#main" class="logo">DONA DAS <span>QUÍMICAS</span></a>
+    <nav class="primary-nav" aria-label="Menu principal">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-cta" id="headerWhats" type="button">Agendar pelo WhatsApp</button>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu móvel">
+  <a href="#inicio">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#catalogo">Catálogo</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#contato">Contato</a>
+  <button class="btn btn-gold header-cta" id="mobileWhats" type="button">Agendar pelo WhatsApp</button>
+</nav>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <picture>
+        <source srcset="assets/thalia.webp" type="image/webp">
+        <img id="heroImg" src="assets/thalia-fallback.jpg" alt="Thalia, especialista da Dona das Químicas">
+      </picture>
+    </div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">SALÃO ESPECIALIZADO EM QUÍMICA CAPILAR</p>
+      <h1>Beleza, química e confiança em cada detalhe.</h1>
+      <p class="lead">Transformando cabelos com técnica, cuidado e resultados que valorizam a sua beleza.</p>
+      <div class="hero-actions">
+        <a href="#catalogo" class="btn btn-gold">Conhecer serviços</a>
+        <button class="btn btn-line js-whats" data-msg="geral" type="button">Agendar pelo WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights" id="diferenciais">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">DIFERENCIAIS</p>
+        <h2>Por que escolher a Dona das Químicas?</h2>
+      </div>
+      <div class="highlight-grid">
+        <div class="highlight-item reveal"><div class="ico">✨</div><h3>Atendimento personalizado</h3><p>Cada procedimento é pensado para o seu tipo de fio e sua rotina.</p></div>
+        <div class="highlight-item reveal"><div class="ico">💎</div><h3>Resultado profissional</h3><p>Técnica apurada em cada etapa do processo químico.</p></div>
+        <div class="highlight-item reveal"><div class="ico">💆‍♀️</div><h3>Cuidado com os fios</h3><p>Saúde capilar em primeiro lugar, antes e depois da química.</p></div>
+        <div class="highlight-item reveal"><div class="ico">🧴</div><h3>Produtos selecionados</h3><p>Linhas escolhidas com critério para cada tipo de tratamento.</p></div>
+        <div class="highlight-item reveal"><div class="ico">❤️</div><h3>Atenção aos detalhes</h3><p>Do diagnóstico à finalização, nada é feito no improviso.</p></div>
+        <div class="highlight-item reveal"><div class="ico">📅</div><h3>Horário marcado</h3><p>Atendimento tranquilo, sem pressa, com hora certa para começar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES CATALOG -->
+  <section id="servicos">
+    <div class="wrap" id="catalogo">
+      <div class="section-head reveal">
+        <p class="eyebrow">CATÁLOGO DE SERVIÇOS</p>
+        <h2>Serviços e valores</h2>
+        <p>Atendimento 100% a domicílio — o valor de ida e volta fica por conta do cliente.</p>
+      </div>
+      <div class="filter-row reveal" id="serviceFilters"></div>
+      <div class="service-grid reveal" id="serviceGrid"></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galeria">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">TRANSFORMAÇÕES</p>
+        <h2>Galeria de resultados</h2>
+        <p>Fotos e vídeos reais de cada trabalho realizado.</p>
+      </div>
+      <div class="filter-row reveal" id="galleryFilters"></div>
+      <div class="gallery-grid reveal" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <p class="eyebrow">ANTES × DEPOIS</p>
+        <h2>Arraste para comparar</h2>
+      </div>
+      <div class="ba-wrap reveal">
+        <div class="ba-slider" id="baSlider">
+          <div class="ba-after" id="baAfter"></div>
+          <div class="ba-before" id="baBefore"></div>
+          <div class="ba-handle" id="baHandle" tabindex="0" role="slider" aria-label="Comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="depoimentos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">DEPOIMENTOS</p>
+        <h2>Quem vive a experiência, recomenda</h2>
+      </div>
+      <div class="testi-grid" id="testiGrid"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">DÚVIDAS FREQUENTES</p>
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <div class="faq-list reveal" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">CONTATO</p>
+        <h2>Fale com a Dona das Químicas</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <dl>
+            <dt>Profissional</dt><dd>Thalia</dd>
+            <dt>WhatsApp</dt><dd id="contactWhats">[inserir número completo com DDD]</dd>
+            <dt>Instagram</dt><dd id="contactInsta">[inserir @perfil]</dd>
+            <dt>Endereço</dt><dd id="contactAddress">[inserir endereço]</dd>
+            <dt>Cidade</dt><dd id="contactCity">[inserir cidade]</dd>
+            <dt>Horário</dt><dd id="contactHours">[inserir horário de atendimento]</dd>
+            <dt>Dias</dt><dd id="contactDays">[inserir dias de atendimento]</dd>
+          </dl>
+        </div>
+        <div class="contact-panel reveal">
+          <h3>Vamos agendar seu horário?</h3>
+          <p>Fale diretamente com Thalia pelo WhatsApp e garanta seu atendimento.</p>
+          <button class="btn btn-gold js-whats" data-msg="geral" type="button">Chamar no WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap inner">
+      <h2>Pronta para transformar seu cabelo?</h2>
+      <p>Agende seu horário com a Dona das Químicas e descubra uma experiência de beleza feita para você.</p>
+      <button class="btn btn-gold js-whats" data-msg="geral" type="button">Agendar pelo WhatsApp</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>DONA DAS QUÍMICAS</h3>
+        <p>Beleza, técnica e cuidado em cada transformação.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>NAVEGAÇÃO</h4>
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div>
+          <h4>REDES</h4>
+          <a href="#" id="instaLink">Instagram</a>
+          <a href="#" class="js-whats" data-msg="geral">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Dona das Químicas. Todos os direitos reservados.</span>
+      <span>Site por Dona das Químicas</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
+  <div class="lightbox-inner">
+    <div class="box" id="lightboxContent">Adicione a imagem real substituindo este espaço no CONFIG do código.</div>
+  </div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<button class="float-whatsapp js-whats" data-msg="geral" aria-label="Falar no WhatsApp" type="button">
+  <svg viewBox="0 0 32 32" fill="#0c0a09"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.6.7 5 1.9 7.1L3 29l6.5-2.2c2 .9 4.2 1.4 6.5 1.4 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm0 22.9c-2.1 0-4-.6-5.7-1.6l-.4-.2-3.9 1.3 1.3-3.8-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7 0-5.9 4.8-10.7 10.7-10.7 5.9 0 10.7 4.8 10.7 10.7 0 5.9-4.8 10.4-10.7 10.4zm5.9-8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C14 12 13.5 10.7 13.2 10.2c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</button>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     SUPABASE — backend real (banco de dados, autenticação e
+     armazenamento). Estas duas linhas são as únicas credenciais
+     públicas do projeto — seguras para expor no front-end, pois
+     toda escrita é bloqueada por Row Level Security no banco.
+  ========================================================= */
+  const SUPABASE_URL = "https://hpjnelsctjuvjkebzojc.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_zh4bRujkYlM1Ib6kvnXLkQ_fIHqPqfC";
+  const db = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+
+  /* =========================================================
+     CONFIG — EDITE AQUI (nome do salão, WhatsApp, serviços, preços,
+     galeria, contatos). Tudo centralizado, nada solto no código.
+  ========================================================= */
+  const CONFIG = {
+    brand: "Dona das Químicas",
+    attendant: "Thalia",
+    WHATSAPP_NUMBER: "5581988070248",
+    instagram: "https://instagram.com/dona_das_quimicas",
+    instagramHandle: "@dona_das_quimicas",
+    messages: {
+      geral: "Olá, Thalia! Vim pelo site da Dona das Químicas e gostaria de agendar um horário.",
+      servico: (nome) => `Olá, Thalia! Vim pelo site da Dona das Químicas e gostaria de saber mais sobre a ${nome}.`
+    },
+    services: [
+      { cat:"alisamentos", name:"Progressiva", desc:"Alisamento com redução de volume e frizz.", duration:"[duração]", indication:"[indicação]", price:"180,00" },
+      { cat:"alisamentos", name:"Progressiva sem formol", desc:"Versão suavizada, indicada para fios sensibilizados.", duration:"[duração]", indication:"[indicação]", price:"54,00" },
+      { cat:"alisamentos", name:"Escova", desc:"Alinhamento e brilho para o dia a dia.", duration:"[duração]", indication:"[indicação]", price:"50,00" },
+      { cat:"alisamentos", name:"Selagem", desc:"Alinhamento com reposição de massa capilar.", duration:"[duração]", indication:"[indicação]", price:"180,00" },
+      { cat:"alisamentos", name:"Botox capilar", desc:"Redução de volume com efeito de nutrição profunda.", duration:"[duração]", indication:"[indicação]", price:"80,00" },
+      { cat:"alisamentos", name:"Relaxamento", desc:"Redução de ondulação natural dos fios.", duration:"[duração]", indication:"[indicação]", price:"52,00" },
+      { cat:"alisamentos", name:"Reconstrução química", desc:"Recuperação da estrutura interna do fio.", duration:"[duração]", indication:"[indicação]", price:"67,00" },
+      { cat:"alisamentos", name:"Tintura", desc:"", duration:"[duração]", indication:"[indicação]", price:"10,00" },
+      { cat:"tratamentos", name:"Hidratação", desc:"Reposição de água e maciez para os fios.", duration:"[duração]", indication:"[indicação]", price:"53,00" },
+      { cat:"tratamentos", name:"Nutrição", desc:"Reposição de lipídios e brilho natural.", duration:"[duração]", indication:"[indicação]", price:"61,00" },
+      { cat:"tratamentos", name:"Reconstrução", desc:"Fortalecimento de fios danificados.", duration:"[duração]", indication:"[indicação]", price:"68,00" },
+      { cat:"tratamentos", name:"Cronograma capilar", desc:"Sequência de hidratação, nutrição e reconstrução.", duration:"[duração]", indication:"[indicação]", price:"200,00" },
+      { cat:"tratamentos", name:"Tratamento anti-frizz", desc:"Controle de volume e frizz no dia a dia.", duration:"[duração]", indication:"[indicação]", price:"66,00" },
+      { cat:"tratamentos", name:"Tratamento para cabelos danificados", desc:"Protocolo intensivo de recuperação.", duration:"[duração]", indication:"[indicação]", price:"56,00" },
+      { cat:"finalizacao", name:"Escova", desc:"Escova modeladora com acabamento liso.", duration:"[duração]", indication:"[indicação]", price:"50,00" },
+      { cat:"finalizacao", name:"Modelagem", desc:"Cachos ou ondas definidos sob medida.", duration:"[duração]", indication:"[indicação]", price:"52,00" },
+      { cat:"finalizacao", name:"Finalização", desc:"Acabamento para eventos e ocasiões especiais.", duration:"[duração]", indication:"[indicação]", price:"63,00" },
+      { cat:"finalizacao", name:"Corte + finalização", desc:"Corte personalizado com finalização completa.", duration:"[duração]", indication:"[indicação]", price:"63,00" },
+      { cat:"finalizacao", name:"Chapinha", desc:"", duration:"[duração]", indication:"[indicação]", price:"40,00" },
+      { cat:"finalizacao", name:"Chapinha + escova", desc:"", duration:"[duração]", indication:"[indicação]", price:"45,00" },
+      { cat:"finalizacao", name:"Apenas lavagem", desc:"", duration:"[duração]", indication:"[indicação]", price:"20,00" },
+      { cat:"outros", name:"Novo serviço", desc:"Adicione aqui novos serviços conforme o catálogo crescer.", duration:"[duração]", indication:"[indicação]", price:"" },
+      { cat:"outros", name:"Aplicação de mega (tela / ponta)", desc:"", duration:"[duração]", indication:"[indicação]", price:"190,00" }
+    ],
+    galleryCategories: ["antes","depois","progressivas","selagens","botox","tratamentos","finalizacoes"],
+    testimonials: [
+      { name:"Cliente Dona das Químicas", quote:"Texto de depoimento ilustrativo — substitua pelo comentário real da cliente.", stars:5, sample:true },
+      { name:"Cliente Dona das Químicas", quote:"Texto de depoimento ilustrativo — substitua pelo comentário real da cliente.", stars:5, sample:true },
+      { name:"Cliente Dona das Químicas", quote:"Texto de depoimento ilustrativo — substitua pelo comentário real da cliente.", stars:5, sample:true }
+    ],
+    faq: [
+      { q:"Preciso agendar antes?", a:"Sim, os atendimentos são feitos com horário marcado. Fale com a Thalia pelo WhatsApp para agendar." },
+      { q:"Quanto tempo dura a progressiva?", a:"[Adicione aqui a duração média informada pela profissional]" },
+      { q:"Posso fazer química se meu cabelo estiver danificado?", a:"[Adicione aqui a orientação da profissional para esse caso]" },
+      { q:"Qual tratamento é indicado para meu cabelo?", a:"A indicação é feita após avaliação. Envie sua dúvida pelo WhatsApp." },
+      { q:"Vocês fazem avaliação antes do procedimento?", a:"[Adicione aqui como funciona a avaliação]" },
+      { q:"Como funciona o agendamento?", a:"O agendamento é feito diretamente pelo WhatsApp com a Thalia." },
+      { q:"Quais formas de pagamento são aceitas?", a:"[Adicione aqui as formas de pagamento aceitas]" }
+    ]
+  };
+
+  const CAT_LABELS = { alisamentos:"Alisamentos e químicas", tratamentos:"Tratamentos", finalizacao:"Finalização", outros:"Outros serviços" };
+  const GAL_LABELS = { antes:"Antes", depois:"Depois", progressivas:"Progressivas", selagens:"Selagens", botox:"Botox", tratamentos:"Tratamentos", finalizacoes:"Finalizações" };
+
+  /* =========================================================
+     WHATSAPP — função central
+  ========================================================= */
+  function openWhatsApp(message){
+    const number = CONFIG.WHATSAPP_NUMBER;
+    if(!number || number.indexOf("INSIRA_AQUI") !== -1){
+      alert("Configure o número completo do WhatsApp na constante WHATSAPP_NUMBER no código do site.");
+      return;
+    }
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener");
+  }
+
+  document.addEventListener("click", function(e){
+    const el = e.target.closest(".js-whats");
+    if(!el) return;
+    e.preventDefault();
+    const kind = el.dataset.msg;
+    if(kind === "servico"){
+      openWhatsApp(CONFIG.messages.servico(el.dataset.service));
+    } else {
+      openWhatsApp(CONFIG.messages.geral);
+    }
+  });
+  document.getElementById("headerWhats").addEventListener("click", ()=>openWhatsApp(CONFIG.messages.geral));
+  document.getElementById("mobileWhats").addEventListener("click", ()=>openWhatsApp(CONFIG.messages.geral));
+
+  function renderContactInfo(){
+    if(CONFIG.instagram){ document.getElementById("instaLink").href = CONFIG.instagram; }
+    if(CONFIG.instagramHandle){
+      document.getElementById("contactInsta").innerHTML = `<a href="${CONFIG.instagram}" target="_blank" rel="noopener">${CONFIG.instagramHandle}</a>`;
+    }
+    if(CONFIG.WHATSAPP_NUMBER && CONFIG.WHATSAPP_NUMBER.indexOf("INSIRA_AQUI") === -1){
+      document.getElementById("contactWhats").textContent = "+" + CONFIG.WHATSAPP_NUMBER;
+    }
+    if(CONFIG.address) document.getElementById("contactAddress").textContent = CONFIG.address;
+    if(CONFIG.city) document.getElementById("contactCity").textContent = CONFIG.city;
+    if(CONFIG.hours) document.getElementById("contactHours").textContent = CONFIG.hours;
+    if(CONFIG.days) document.getElementById("contactDays").textContent = CONFIG.days;
+  }
+  renderContactInfo();
+
+  /* =========================================================
+     RENDER: SERVICES
+  ========================================================= */
+  const serviceGrid = document.getElementById("serviceGrid");
+  const serviceFilters = document.getElementById("serviceFilters");
+  const serviceCats = ["todos", ...Object.keys(CAT_LABELS)];
+
+  function renderServiceFilters(){
+    serviceFilters.innerHTML = serviceCats.map((c,i)=>
+      `<button class="filter-btn${i===0?' active':''}" data-cat="${c}" type="button">${c==="todos"?"Todos":CAT_LABELS[c]}</button>`
+    ).join("");
+  }
+  function renderServices(filter){
+    const list = filter && filter!=="todos" ? CONFIG.services.filter(s=>s.cat===filter) : CONFIG.services;
+    serviceGrid.innerHTML = list.map(s=>`
+      <div class="service-card">
+        <h3>${s.name}</h3>
+        <p class="desc">${s.desc}</p>
+        <p class="meta">${s.duration} · Indicado para: ${s.indication}</p>
+        <div class="price-row">
+          <span class="price">${s.price ? "R$ "+s.price : "R$ XX,XX"}</span>
+          <button class="book-btn js-whats" data-msg="servico" data-service="${s.name}" type="button">Agendar →</button>
+        </div>
+      </div>`).join("");
+  }
+  renderServiceFilters();
+  renderServices("todos");
+  serviceFilters.addEventListener("click", e=>{
+    const btn = e.target.closest(".filter-btn");
+    if(!btn) return;
+    serviceFilters.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderServices(btn.dataset.cat);
+  });
+
+  /* =========================================================
+     RENDER: GALLERY (somente leitura — upload agora é feito
+     exclusivamente pelo painel administrativo autenticado)
+  ========================================================= */
+  const galleryGrid = document.getElementById("galleryGrid");
+  const galleryFilters = document.getElementById("galleryFilters");
+  const galCats = ["todos", ...CONFIG.galleryCategories];
+
+  // Preenchido por syncFromSupabase(); cada chave de categoria aponta
+  // para uma lista de { media_type, public_url }.
+  let GALLERY_DATA = {};
+
+  function renderGalleryFilters(){
+    galleryFilters.innerHTML = galCats.map((c,i)=>
+      `<button class="filter-btn${i===0?' active':''}" data-cat="${c}" type="button">${c==="todos"?"Todos":GAL_LABELS[c]}</button>`
+    ).join("");
+  }
+
+  function galleryTileHTML(item, cat){
+    const inner = item.media_type === "video"
+      ? `<video src="${item.public_url}" muted loop playsinline preload="metadata"></video><span class="play-badge">▶ vídeo</span>`
+      : `<img src="${item.public_url}" alt="Transformação — ${GAL_LABELS[cat]}" loading="lazy">`;
+    return `<div class="gallery-tile filled" data-url="${item.public_url}" data-type="${item.media_type}" tabindex="0" role="button" aria-label="Ver ${GAL_LABELS[cat]}">
+      <span class="tag">${GAL_LABELS[cat]}</span>
+      ${inner}
+    </div>`;
+  }
+
+  function renderGallery(filter){
+    const cats = filter && filter!=="todos" ? [filter] : CONFIG.galleryCategories;
+    let html = "";
+    cats.forEach(c=>{
+      (GALLERY_DATA[c] || []).forEach(item => { html += galleryTileHTML(item, c); });
+    });
+    galleryGrid.innerHTML = html || `<p class="gallery-note" style="grid-column:1/-1;">Novas fotos em breve.</p>`;
+  }
+  renderGalleryFilters();
+  renderGallery("todos");
+  galleryFilters.addEventListener("click", e=>{
+    const btn = e.target.closest(".filter-btn");
+    if(!btn) return;
+    galleryFilters.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderGallery(btn.dataset.cat);
+  });
+
+  const lightbox = document.getElementById("lightbox");
+  document.getElementById("galleryGrid").addEventListener("keydown", e=>{
+    if(e.key !== "Enter" && e.key !== " ") return;
+    const tile = e.target.closest(".gallery-tile");
+    if(!tile) return;
+    e.preventDefault();
+    tile.click();
+  });
+  document.getElementById("galleryGrid").addEventListener("click", e=>{
+    const tile = e.target.closest(".gallery-tile");
+    if(!tile) return;
+    document.getElementById("lightboxContent").innerHTML = tile.dataset.type === "video"
+      ? `<video src="${tile.dataset.url}" controls autoplay playsinline style="width:100%;"></video>`
+      : `<img src="${tile.dataset.url}" alt="" style="width:100%;">`;
+    lightbox.classList.add("open");
+  });
+  document.getElementById("lightboxClose").addEventListener("click", ()=>{
+    lightbox.classList.remove("open");
+    lightbox.querySelectorAll("video").forEach(v=>v.pause());
+  });
+  lightbox.addEventListener("click", e=>{
+    if(e.target===lightbox){
+      lightbox.classList.remove("open");
+      lightbox.querySelectorAll("video").forEach(v=>v.pause());
+    }
+  });
+  document.addEventListener("keydown", e=>{
+    if(e.key !== "Escape") return;
+    if(lightbox.classList.contains("open")){
+      lightbox.classList.remove("open");
+      lightbox.querySelectorAll("video").forEach(v=>v.pause());
+    }
+    if(mobileNav.classList.contains("open")){
+      mobileNav.classList.remove("open");
+      burger.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  /* =========================================================
+     RENDER: ANTES/DEPOIS (somente leitura no site público)
+  ========================================================= */
+  const baSection = document.getElementById("baSlider").closest("section");
+  let BA_DATA = { before: null, after: null };
+
+  function renderBeforeAfter(){
+    const { before, after } = BA_DATA;
+    if(!before || !after){ baSection.style.display = "none"; return; }
+    baSection.style.display = "";
+    document.getElementById("baBefore").innerHTML = `<img src="${before}" alt="ANTES"><span class="ba-label">ANTES</span>`;
+    document.getElementById("baAfter").innerHTML = `<img src="${after}" alt="DEPOIS"><span class="ba-label">DEPOIS</span>`;
+  }
+  renderBeforeAfter();
+
+  /* =========================================================
+     RENDER: TESTIMONIALS
+  ========================================================= */
+  function renderTestimonials(){
+    document.getElementById("testiGrid").innerHTML = CONFIG.testimonials.map(t=>`
+      <div class="testi-card">
+        ${t.sample ? '<span class="badge">Depoimento ilustrativo</span>' : ''}
+        <div class="stars">${"★".repeat(t.stars)}${"☆".repeat(5-t.stars)}</div>
+        <p class="quote">"${t.quote}"</p>
+        <p class="who">${t.name}</p>
+      </div>`).join("");
+  }
+  renderTestimonials();
+
+  /* =========================================================
+     RENDER: FAQ (accordion)
+  ========================================================= */
+  const faqList = document.getElementById("faqList");
+  faqList.innerHTML = CONFIG.faq.map((f,i)=>`
+    <div class="faq-item" data-i="${i}">
+      <button class="faq-q" aria-expanded="false">${f.q}<span class="plus">+</span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`).join("");
+  faqList.addEventListener("click", e=>{
+    const btn = e.target.closest(".faq-q");
+    if(!btn) return;
+    const item = btn.closest(".faq-item");
+    const answer = item.querySelector(".faq-a");
+    const isOpen = item.classList.contains("open");
+    faqList.querySelectorAll(".faq-item.open").forEach(o=>{
+      o.classList.remove("open");
+      o.querySelector(".faq-a").style.maxHeight = null;
+      o.querySelector(".faq-q").setAttribute("aria-expanded","false");
+    });
+    if(!isOpen){
+      item.classList.add("open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      btn.setAttribute("aria-expanded","true");
+    }
+  });
+
+  /* =========================================================
+     HEADER: scroll state + mobile menu
+  ========================================================= */
+  const header = document.getElementById("siteHeader");
+  window.addEventListener("scroll", ()=>{
+    header.classList.toggle("solid", window.scrollY > 40);
+  }, { passive:true });
+
+  const burger = document.getElementById("burger");
+  const mobileNav = document.getElementById("mobileNav");
+  burger.addEventListener("click", ()=>{
+    const open = mobileNav.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true":"false");
+    document.body.style.overflow = open ? "hidden":"";
+  });
+  mobileNav.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>{
+    mobileNav.classList.remove("open");
+    burger.classList.remove("open");
+    document.body.style.overflow = "";
+  }));
+
+  /* =========================================================
+     BEFORE / AFTER SLIDER
+  ========================================================= */
+  const baSlider = document.getElementById("baSlider");
+  const baBefore = document.getElementById("baBefore");
+  const baHandle = document.getElementById("baHandle");
+  let dragging = false;
+
+  function setSlider(x){
+    const rect = baSlider.getBoundingClientRect();
+    let pct = ((x - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    applySliderPct(pct);
+  }
+  function applySliderPct(pct){
+    baBefore.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    baHandle.style.left = pct + "%";
+    baHandle.setAttribute("aria-valuenow", Math.round(pct));
+  }
+  baHandle.addEventListener("keydown", e=>{
+    const current = parseFloat(baHandle.style.left) || 50;
+    if(e.key === "ArrowLeft"){ applySliderPct(Math.max(0, current-5)); e.preventDefault(); }
+    else if(e.key === "ArrowRight"){ applySliderPct(Math.min(100, current+5)); e.preventDefault(); }
+    else if(e.key === "Home"){ applySliderPct(0); e.preventDefault(); }
+    else if(e.key === "End"){ applySliderPct(100); e.preventDefault(); }
+  });
+  baHandle.addEventListener("mousedown", ()=>dragging=true);
+  window.addEventListener("mouseup", ()=>dragging=false);
+  window.addEventListener("mousemove", e=>{ if(dragging) setSlider(e.clientX); });
+  baHandle.addEventListener("touchstart", ()=>dragging=true, {passive:true});
+  window.addEventListener("touchend", ()=>dragging=false);
+  window.addEventListener("touchmove", e=>{ if(dragging && e.touches[0]) setSlider(e.touches[0].clientX); }, {passive:true});
+  baSlider.addEventListener("click", e=>setSlider(e.clientX));
+
+  /* =========================================================
+     SCROLL REVEAL
+  ========================================================= */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealEls = document.querySelectorAll(".reveal");
+  if(reduceMotion){
+    revealEls.forEach(el=>el.classList.add("in"));
+  } else if("IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add("in"); io.unobserve(entry.target); }
+      });
+    }, { threshold:.15 });
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add("in"));
+  }
+
+  /* hero parallax (disabled under reduced motion) */
+  if(!reduceMotion){
+    const heroImg = document.getElementById("heroImg");
+    window.addEventListener("scroll", ()=>{
+      const y = window.scrollY;
+      if(y < window.innerHeight) heroImg.style.transform = `translateY(${y*0.12}px) scale(1.02)`;
+    }, { passive:true });
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* =========================================================
+     INTRO ANIMATION SEQUENCE
+  ========================================================= */
+  const intro = document.getElementById("intro");
+  const introPhoto = document.getElementById("introPhoto");
+  const introWordmark = document.getElementById("introWordmark");
+  const introSkip = document.getElementById("introSkip");
+  const canvas = document.getElementById("introCanvas");
+  let rafId = null;
+
+  function endIntro(){
+    document.body.classList.remove("locked");
+    intro.classList.add("fade-out");
+    if(rafId) cancelAnimationFrame(rafId);
+    setTimeout(()=>{ intro.style.display = "none"; }, 1150);
+    try{ sessionStorage.setItem("ddq_intro_seen", "1"); }catch(e){}
+  }
+
+  function startParticles(){
+    const ctx = canvas.getContext("2d");
+    function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener("resize", resize);
+    const N = window.innerWidth < 640 ? 18 : 34;
+    const particles = Array.from({length:N}, ()=>({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height + canvas.height*0.2,
+      r: Math.random()*1.6 + 0.4,
+      s: Math.random()*0.35 + 0.08,
+      o: Math.random()*0.5 + 0.15
+    }));
+    function tick(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        p.y -= p.s;
+        if(p.y < -10){ p.y = canvas.height + 10; p.x = Math.random()*canvas.width; }
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(201,161,91,${p.o})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fill();
+      });
+      rafId = requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  function runIntroSequence(){
+    startParticles();
+    setTimeout(()=>introPhoto.classList.add("show"), 300);
+    setTimeout(()=>introWordmark.classList.add("show"), 4000);
+    setTimeout(endIntro, 7000);
+  }
+
+  let alreadySeen = false;
+  try{ alreadySeen = sessionStorage.getItem("ddq_intro_seen") === "1"; }catch(e){}
+
+  if(alreadySeen){
+    document.body.classList.remove("locked");
+    intro.style.display = "none";
+  } else if(reduceMotion){
+    introPhoto.classList.add("show");
+    introWordmark.classList.add("show");
+    setTimeout(endIntro, 900);
+  } else {
+    runIntroSequence();
+  }
+  introSkip.addEventListener("click", endIntro);
+
+  /* =========================================================
+     SINCRONIZAÇÃO COM O BANCO DE DADOS REAL
+     O site já renderizou com o conteúdo padrão acima (nunca fica
+     em branco). Aqui buscamos os dados reais salvos pela
+     administradora e, se a busca funcionar, atualizamos a tela.
+     Se falhar (sem internet, banco fora do ar), o site continua
+     funcionando normalmente com o conteúdo padrão.
+  ========================================================= */
+  async function syncFromSupabase(){
+    if(!db) return;
+    try{
+      const [configRes, servicesRes, galleryRes, baRes, testiRes] = await Promise.all([
+        db.from("site_config").select("*").eq("id",1).single(),
+        db.from("services").select("*").eq("active",true).order("sort_order"),
+        db.from("gallery_items").select("*").eq("active",true).not("public_url","is",null).order("sort_order"),
+        db.from("before_after").select("*"),
+        db.from("testimonials").select("*").eq("active",true).order("sort_order")
+      ]);
+
+      if(configRes.data){
+        const c = configRes.data;
+        if(c.whatsapp_number) CONFIG.WHATSAPP_NUMBER = c.whatsapp_number;
+        if(c.instagram_handle) CONFIG.instagramHandle = c.instagram_handle;
+        if(c.instagram_url) CONFIG.instagram = c.instagram_url;
+        CONFIG.address = c.address; CONFIG.city = c.city; CONFIG.hours = c.hours; CONFIG.days = c.days;
+        renderContactInfo();
+      }
+
+      if(servicesRes.data && servicesRes.data.length){
+        CONFIG.services = servicesRes.data.map(s => ({
+          cat: s.category, name: s.name, desc: s.description || "",
+          duration: s.duration || "[duração]", indication: s.indication || "[indicação]",
+          price: s.price || ""
+        }));
+        renderServices(document.querySelector("#serviceFilters .filter-btn.active")?.dataset.cat || "todos");
+      }
+
+      if(galleryRes.data){
+        GALLERY_DATA = {};
+        galleryRes.data.forEach(item=>{
+          (GALLERY_DATA[item.category] ||= []).push({ media_type: item.media_type, public_url: item.public_url });
+        });
+        renderGallery(document.querySelector("#galleryFilters .filter-btn.active")?.dataset.cat || "todos");
+      }
+
+      if(baRes.data){
+        const before = baRes.data.find(r=>r.side==="before");
+        const after = baRes.data.find(r=>r.side==="after");
+        BA_DATA = { before: before?.public_url || null, after: after?.public_url || null };
+        renderBeforeAfter();
+      }
+
+      if(testiRes.data && testiRes.data.length){
+        CONFIG.testimonials = testiRes.data.map(t=>({ name:t.name, quote:t.quote, stars:t.stars, sample:t.is_sample }));
+        renderTestimonials();
+      }
+    }catch(err){
+      // Site já está no ar com o conteúdo padrão — nada quebra para o visitante.
+      console.warn("Não foi possível sincronizar com o banco agora; exibindo conteúdo padrão.", err);
+    }
+  }
+  syncFromSupabase();
+
+})();
+</script>
+</body>
+</html>
